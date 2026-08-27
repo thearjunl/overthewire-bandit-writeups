@@ -25,17 +25,19 @@ After connecting to the server, the password for the next level is stored in a f
 ssh bandit0@bandit.labs.overthewire.org -p 2220
 ```
 After logging in:
-
+```bash
 ls
 cat readme
-Notes
-SSH (Secure Shell) is used to securely connect to a remote system.
-The -p option specifies the port used for the SSH connection.
-ls is used to list files and directories.
-cat is used to display the contents of a file.
-Linux commands are case-sensitive.
-This level introduced the basic workflow of connecting to a remote Linux machine and reading files from the command line.
-Conclusion
+```
+## Notes
 
-Bandit Level 0 provided a basic introduction to SSH and Linux command-line usage.
-It established the foundation for the upcoming levels, where the challenges gradually become more complex
+- SSH (Secure Shell) is used to securely connect to a remote system.
+- The `-p` option specifies the port used for the SSH connection.
+- `ls` is used to list files and directories.
+- `cat` is used to display the contents of a file.
+- Linux commands are case-sensitive.
+- This level introduced the basic workflow of connecting to a remote Linux machine and reading files from the command line.
+
+## Conclusion
+
+Bandit Level 0 provided a basic introduction to SSH and Linux command-line usage. It established the foundation for the upcoming levels, where the challenges gradually become more complex.
