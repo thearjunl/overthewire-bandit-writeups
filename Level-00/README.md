@@ -23,7 +23,7 @@ After connecting to the server, the password for the next level is stored in a f
 
 ```bash
 ssh bandit0@bandit.labs.overthewire.org -p 2220
-
+```
 After logging in:
 
 ls
