@@ -1,72 +1,78 @@
-# Bandit Level 5 → Level 6
+# Bandit Level 4 → Level 5
 
 ## Introduction
 
-Bandit Level 5 introduces the use of the `find` command to search for files based on specific conditions.
-
-This level helps understand how Linux can be used to locate a particular file when there are many files and directories.
+Bandit Level 4 builds on the file-handling skills learned in the previous levels.  
+This level introduces the use of the `file` command to identify the type of files.
 
 ## Challenge Overview
 
-The password for the next level is stored somewhere in the `inhere` directory.
+The password for the next level is stored in one of the files inside the `inhere` directory.
 
-The correct file has the following properties:
-
-- Human-readable
-- 1033 bytes in size
-- Not executable
+Most of the files contain non-readable data, but one file contains human-readable text. The goal is to identify that file and read its contents.
 
 ## Approach and Strategy
 
-1. Connect to the Bandit server as `bandit5`.
+1. Connect to the Bandit server as `bandit4`.
 2. Enter the `inhere` directory.
-3. Use the `find` command to search for files matching the given conditions.
-4. Identify the file that is 1033 bytes and not executable.
-5. Read the contents of the file using `cat`.
-6. Use the password obtained to access the next level.
+3. List the available files.
+4. Use the `file` command to identify the type of each file.
+5. Find the file identified as ASCII text or human-readable text.
+6. Read the contents of that file using `cat`.
+7. The output gives the password for the next level.
 
 ## Commands Used
 
+Connect to the server:
+
 ```bash
-ssh bandit5@bandit.labs.overthewire.org -p 2220
+ssh bandit4@bandit.labs.overthewire.org -p 2220
 ```
 
 
 ## After Logging In
 
-List the contents of the current directory and enter the `inhere` directory:
+### 1. Enter the `inhere` Directory
 
 ```bash
-ls
 cd inhere
 ```
 
-Search for the required file:
+### 2. List the Files
 
 ```bash
-find . -type f -size 1033c ! -executable
+ls
 ```
 
-Read the identified file:
+### 3. Check the File Types
+
+Use the `file` command to check the type of every file:
 
 ```bash
-cat ./maybehere07/.file2
+file ./*
 ```
 
-> **Note:** The exact filename may be different depending on the Bandit environment. Use the output of the `find` command to identify the correct file.
+### 4. Read the Human-Readable File
+
+Identify the file containing ASCII text or human-readable data from the output of `file ./*`, then read it:
+
+```bash
+cat ./-file07
+```
+
+> **Note:** The exact filename should be taken from the output of the `file ./*` command.
 
 ## Notes
 
-* `find` is used to search for files and directories.
-* `-type f` searches only for regular files.
-* `-size 1033c` searches for files with exactly 1033 bytes.
-* `! -executable` excludes executable files.
+* `file` is used to determine the type of a file.
+* `./*` represents all files in the current directory.
+* Most files in this level contain non-readable data.
+* The correct file can be identified by looking for an ASCII text or human-readable file.
 * `cat` is used to display the contents of the identified file.
-* Combining multiple conditions with `find` makes it possible to locate a specific file efficiently.
-* This level introduced searching for files based on their properties rather than their names.
+* This level introduced the importance of identifying a file's actual type instead of relying only on its filename or extension.
 
 ## Conclusion
 
-Bandit Level 5 introduced the `find` command and showed how different conditions can be combined to locate a specific file.
+Bandit Level 4 introduced the `file` command and demonstrated how it can be used to identify unknown file types.
 
-This level improved my understanding of Linux file searching and demonstrated how command-line tools can make it easier to find information in directories containing many files.
+This level helped strengthen my understanding of Linux file analysis and showed how simple commands can be combined to locate useful information efficiently.
