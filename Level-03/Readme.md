@@ -51,7 +51,8 @@ ls -la
 Read the hidden file:
 
 ```bash
-cat .hidden
+cat ...Hiding-From-You
+
 ```
 
 ## Notes
